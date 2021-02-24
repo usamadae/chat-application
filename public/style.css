@@ -2,6 +2,13 @@
     margin: 0;
     padding: 0;
 }
+
+@media (max-width: 991.98px) { 
+    .message{
+        width: 100% !important;
+    }
+ }
+
 body{
     background: linear-gradient(rgb(255,255,255) , rgb(109,39,239));
     height: 100vh;
@@ -35,7 +42,7 @@ h1{
     border: 2px solid black;
     border-radius: 26px;
     font-weight: bold;
-    max-width: 25% !important;
+    width: 25%;
     margin-bottom: 15px;
    height: auto;
 }
