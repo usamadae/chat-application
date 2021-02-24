@@ -12,11 +12,13 @@ const append = (message , position)=>{
 const messageCreate = document.createElement('div');
 messageCreate.innerText = message;
 messageCreate.classList.add('message');
+messageCreate.classList.add('container-fluid')
 messageCreate.classList.add(position);
 contan.append(messageCreate);
 if (position == 'left'){
     audio.play();
 }
+socroll();
 };
 
 socket.emit('new-user-joined' , names);
@@ -27,17 +29,22 @@ append(`${names} join tha chat` , 'right');
 
 socket.on('recieve' , data=>{
     append(`${data.name} : ${data.message}` , 'left');
+    socroll();
     });
 
     socket.on('left' , name=>{
-        append(`${name} left the chat` , 'left');
+        append(`${name} left the chat` , 'right');
         });
     
 
 form.addEventListener('submit' , (e)=>{
 e.preventDefault();
 const message1 = input.value;
-append(`Your :${message1}`, 'right');
+append(`You :${message1}`, 'right');
 socket.emit('send' , message1);
 input.value = '';
 });
+
+function socroll(){
+    contan.scrollTop =  contan.scrollHeight;
+}
